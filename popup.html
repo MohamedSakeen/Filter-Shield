@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContentShield</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ContentShield</h1>
+            <p class="subtitle">Protect your browsing experience from sensitive content</p>
+        </header>
+        
+        <div class="dashboard">
+            <div class="card">
+                <h2>Protection Status</h2>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="blockedCount">0</div>
+                        <div class="stat-label">Content Blocked Today</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">98%</div>
+                        <div class="stat-label">Effectiveness</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>Controls</h2>
+                <div class="controls">
+                    <div class="toggle">
+                        <span>Enable Filtering</span>
+                        <label class="switch">
+                            <input type="checkbox" id="toggleEnabled" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="toggle">
+                        <span>Blur Images</span>
+                        <label class="switch">
+                            <input type="checkbox" id="toggleBlur" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="toggle">
+                        <span>Hide Completely</span>
+                        <label class="switch">
+                            <input type="checkbox" id="toggleHide">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="filter-section">
+            <h2>Content Filters</h2>
+            
+            <div class="filter-category">
+                <div class="filter-header">
+                    <div class="filter-title">Adult Content</div>
+                    <label class="switch">
+                        <input type="checkbox" data-category="adult" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="filter-content" data-category="adult">
+                    <!-- Keywords will be populated by JavaScript -->
+                </div>
+                <div class="add-keyword">
+                    <input type="text" data-category="adult" placeholder="Add new keyword">
+                    <button data-category="adult">Add</button>
+                </div>
+            </div>
+            
+            <div class="filter-category">
+                <div class="filter-header">
+                    <div class="filter-title">Nudity</div>
+                    <label class="switch">
+                        <input type="checkbox" data-category="nudity" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="filter-content" data-category="nudity">
+                    <!-- Keywords will be populated by JavaScript -->
+                </div>
+                <div class="add-keyword">
+                    <input type="text" data-category="nudity" placeholder="Add new keyword">
+                    <button data-category="nudity">Add</button>
+                </div>
+            </div>
+            
+            <div class="filter-category">
+                <div class="filter-header">
+                    <div class="filter-title">Violence & Gore</div>
+                    <label class="switch">
+                        <input type="checkbox" data-category="violence" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="filter-content" data-category="violence">
+                    <!-- Keywords will be populated by JavaScript -->
+                </div>
+                <div class="add-keyword">
+                    <input type="text" data-category="violence" placeholder="Add new keyword">
+                    <button data-category="violence">Add</button>
+                </div>
+            </div>
+            
+            <div class="filter-category">
+                <div class="filter-header">
+                    <div class="filter-title">Profanity</div>
+                    <label class="switch">
+                        <input type="checkbox" data-category="profanity" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="filter-content" data-category="profanity">
+                    <!-- Keywords will be populated by JavaScript -->
+                </div>
+                <div class="add-keyword">
+                    <input type="text" data-category="profanity" placeholder="Add new keyword">
+                    <button data-category="profanity">Add</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="support">
+            <p>ContentShield works across all major browsers and social media platforms</p>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
