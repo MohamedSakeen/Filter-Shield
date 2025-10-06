@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Default keywords for each category
     const defaultKeywords = {
         adult: ['explicit', 'porn', 'nsfw', 'adult', 'xxx', 'sex','xnxx','xvideos','pornhub','hentai','xhamster','redtube','xham'],
-        nudity: ['naked', 'nude', 'undressed', 'bare', 'exposed','topless' ],
+        nudity: ['naked', 'nude', 'undressed', 'bare', 'exposed','topless','lingerie','lingery','lingary','lingarye','lingaryee','lingaryeee'],
         violence: ['gore', 'violence', 'blood', 'brutal', 'attack', 'kill','fight','war','killing','murder','suscide','genocide'],
         profanity: ['curse', 'swear', 'profanity', 'fuck', 'shit', 'asshole']
     };
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         blurImages: true,
         hideCompletely: false,
         blockedCount: 0,
-        keywords: defaultKeywords,
+        keywords: null,  // ← null means “not initialized yet”
         categoryStates: {
             adult: true,
             nudity: true,
@@ -21,6 +21,12 @@ document.addEventListener('DOMContentLoaded', function() {
             profanity: true
         }
     }, function(settings) {
+        // If keywords have never been saved before, initialize them with defaults
+        if (!settings.keywords) {
+            settings.keywords = defaultKeywords;
+            chrome.storage.local.set({ keywords: defaultKeywords });
+        }
+
         // Set toggle states
         document.getElementById('toggleEnabled').checked = settings.enabled;
         document.getElementById('toggleBlur').checked = settings.blurImages;
@@ -36,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const toggle = document.querySelector(`input[data-category="${category}"]`);
             if (toggle) {
                 toggle.checked = settings.categoryStates[category];
-                
                 // Render keywords for this category
                 renderKeywords(category, settings.keywords[category] || []);
             }
@@ -62,9 +67,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const category = this.getAttribute('data-category');
             chrome.storage.local.get({ categoryStates: {} }, function(settings) {
                 const categoryStates = settings.categoryStates;
-                categoryStates[category] = this.checked;
+                categoryStates[category] = toggle.checked;
                 chrome.storage.local.set({ categoryStates: categoryStates });
-            }.bind(this));
+            });
         });
     });
 
@@ -77,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (keyword) {
                 chrome.storage.local.get({ keywords: {} }, function(settings) {
-                    const keywords = settings.keywords;
+                    const keywords = settings.keywords || {};
                     if (!keywords[category]) keywords[category] = [];
                     
                     // Add keyword if not already present

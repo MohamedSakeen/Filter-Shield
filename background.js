@@ -26,7 +26,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 // Initialize default settings
 chrome.runtime.onInstalled.addListener(function() {
     const defaultKeywords = {
-        adult: ['explicit', 'porn', 'nsfw', 'adult', 'xxx', 'sex'],
+        adult: ['explicit', 'porn', 'nsfw', 'adult', 'xxx', 'sex','desi'],
         nudity: ['naked', 'nude', 'undressed', 'bare', 'exposed'],
         violence: ['gore', 'violence', 'blood', 'brutal', 'attack', 'kill'],
         profanity: ['curse', 'swear', 'profanity', 'fuck', 'shit', 'asshole']
